@@ -1,0 +1,30 @@
+project_id = "cikbuzicnygdyjpuizcu"
+
+[functions.submit-lead]
+verify_jwt = false
+
+[functions.external-admin-proxy]
+verify_jwt = false
+
+[functions.log-search]
+verify_jwt = false
+
+[functions.log-conversion]
+verify_jwt = false
+
+[functions.watch-route-scan]
+verify_jwt = false
+
+[functions.watch-route-confirm]
+verify_jwt = false
+
+[functions.send-charter-enquiry]
+verify_jwt = false
+
+[functions.send-charter-digest]
+verify_jwt = false
+
+[functions.unsubscribe-charter-digest]
+verify_jwt = false
+
+
