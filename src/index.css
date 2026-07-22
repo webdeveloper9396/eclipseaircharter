@@ -1,0 +1,337 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* OneWay Admin Dashboard — Operational Control Plane
+   Design Philosophy: Calm, Operational, Neutral, Factual
+   Dark neutral base with soft contrast and restrained accent
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
+@layer base {
+  :root {
+    /* Dark mode by default - operations console aesthetic */
+    --background: 220 13% 8%;
+    --foreground: 220 10% 85%;
+
+    --card: 220 13% 10%;
+    --card-foreground: 220 10% 85%;
+
+    --popover: 220 13% 12%;
+    --popover-foreground: 220 10% 85%;
+
+    /* Primary - Soft blue-gray for primary actions */
+    --primary: 215 20% 65%;
+    --primary-foreground: 220 13% 8%;
+
+    /* Secondary - Subtle surface variation */
+    --secondary: 220 13% 14%;
+    --secondary-foreground: 220 10% 75%;
+
+    /* Muted - For subdued elements */
+    --muted: 220 13% 16%;
+    --muted-foreground: 220 10% 55%;
+
+    /* Accent - Restrained amber for attention items (not luxury gold) */
+    --accent: 38 70% 50%;
+    --accent-foreground: 220 13% 8%;
+
+    /* Destructive - Muted red for dangerous actions */
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Status colors - Operational, not decorative */
+    --status-success: 142 50% 40%;
+    --status-warning: 38 70% 50%;
+    --status-error: 0 60% 50%;
+    --status-info: 210 50% 50%;
+
+    /* Severity indicators */
+    --severity-error: 0 60% 50%;
+    --severity-warn: 38 70% 50%;
+    --severity-info: 210 50% 50%;
+
+    --border: 220 13% 18%;
+    --input: 220 13% 18%;
+    --ring: 215 20% 50%;
+
+    --radius: 0.375rem;
+
+    /* Sidebar */
+    --sidebar-background: 220 13% 6%;
+    --sidebar-foreground: 220 10% 70%;
+    --sidebar-primary: 215 20% 65%;
+    --sidebar-primary-foreground: 220 13% 8%;
+    --sidebar-accent: 220 13% 12%;
+    --sidebar-accent-foreground: 220 10% 85%;
+    --sidebar-border: 220 13% 14%;
+    --sidebar-ring: 215 20% 50%;
+
+    /* Custom tokens for dashboard */
+    --tile-background: 220 13% 11%;
+    --tile-border: 220 13% 16%;
+    --table-header: 220 13% 12%;
+    --table-row-hover: 220 13% 14%;
+    --badge-muted: 220 13% 20%;
+  }
+
+  /* Light mode - rarely used for ops consoles but available */
+  .light {
+    --background: 220 10% 98%;
+    --foreground: 220 13% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 10%;
+
+    --primary: 220 13% 15%;
+    --primary-foreground: 220 10% 98%;
+
+    --secondary: 220 10% 94%;
+    --secondary-foreground: 220 13% 15%;
+
+    --muted: 220 10% 92%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 38 70% 50%;
+    --accent-foreground: 220 13% 8%;
+
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 10% 88%;
+    --input: 220 10% 88%;
+    --ring: 220 13% 15%;
+
+    --sidebar-background: 220 10% 96%;
+    --sidebar-foreground: 220 13% 25%;
+    --sidebar-primary: 220 13% 15%;
+    --sidebar-primary-foreground: 220 10% 98%;
+    --sidebar-accent: 220 10% 92%;
+    --sidebar-accent-foreground: 220 13% 15%;
+    --sidebar-border: 220 10% 88%;
+    --sidebar-ring: 220 13% 15%;
+
+    --tile-background: 0 0% 100%;
+    --tile-border: 220 10% 90%;
+    --table-header: 220 10% 96%;
+    --table-row-hover: 220 10% 94%;
+    --badge-muted: 220 10% 92%;
+  }
+
+  /* Eclipse Air Charter public theme — light with gold accent */
+  .eclipse-public,
+  .eclipse-public-portal {
+    --background: 0 0% 100%;
+    --foreground: 220 13% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 12%;
+
+    /* Eclipse Gold as primary */
+    --primary: 43 33% 56%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 40 10% 95%;
+    --secondary-foreground: 220 13% 15%;
+
+    --muted: 40 6% 94%;
+    --muted-foreground: 220 10% 40%;
+
+    --accent: 43 33% 56%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 40 8% 85%;
+    --input: 40 8% 85%;
+    --ring: 43 33% 56%;
+
+    --radius: 0.375rem;
+
+    --tile-background: 0 0% 100%;
+    --tile-border: 40 8% 88%;
+    --table-header: 40 6% 96%;
+    --table-row-hover: 40 6% 94%;
+    --badge-muted: 40 6% 90%;
+
+  /* Eclipse-specific custom properties */
+    --eclipse-gold: 43 33% 56%;
+    --eclipse-dark: 220 13% 12%;
+    --eclipse-contact-bg: 220 13% 15%;
+
+    color: hsl(var(--foreground));
+  }
+
+  .eclipse-public,
+  .eclipse-public-portal {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  /* When eclipse-public is on the page, portal-rendered elements (popovers, dialogs)
+     should also inherit the light theme. Radix portals render at body level. */
+  body:has(.eclipse-public) [data-radix-popper-content-wrapper],
+  body:has(.eclipse-public) [data-radix-portal],
+  body:has(.eclipse-public) [role="dialog"] {
+    --background: 0 0% 100%;
+    --foreground: 220 13% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 12%;
+    --primary: 43 33% 56%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 40 10% 95%;
+    --secondary-foreground: 220 13% 15%;
+    --muted: 40 6% 94%;
+    --muted-foreground: 220 10% 40%;
+    --accent: 220 10% 96%;
+    --accent-foreground: 220 13% 12%;
+    --border: 40 8% 85%;
+    --input: 40 8% 85%;
+    --ring: 43 33% 56%;
+
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* Monospace for data/codes */
+  .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+    font-feature-settings: 'liga' 0;
+  }
+}
+
+@layer components {
+  /* Metric tiles */
+  .metric-tile {
+    @apply bg-tile border border-tile-border rounded-md p-4 cursor-pointer transition-colors;
+  }
+  
+  .metric-tile:hover {
+    @apply bg-secondary;
+  }
+
+  /* Data tables */
+  .data-table {
+    @apply w-full text-sm;
+  }
+
+  .data-table th {
+    @apply bg-table-header text-muted-foreground font-medium text-left px-4 py-3 border-b border-border;
+  }
+
+  .data-table td {
+    @apply px-4 py-3 border-b border-border;
+  }
+
+  .data-table tr:hover td {
+    @apply bg-table-row-hover;
+  }
+
+  /* Severity badges */
+  .severity-error {
+    @apply bg-severity-error/20 text-severity-error;
+  }
+
+  .severity-warn {
+    @apply bg-severity-warn/20 text-severity-warn;
+  }
+
+  .severity-info {
+    @apply bg-severity-info/20 text-severity-info;
+  }
+
+  /* Status indicators */
+  .status-dot {
+    @apply w-2 h-2 rounded-full inline-block;
+  }
+
+  .status-dot-success {
+    @apply bg-status-success;
+  }
+
+  .status-dot-warning {
+    @apply bg-status-warning;
+  }
+
+  .status-dot-error {
+    @apply bg-status-error;
+  }
+
+  /* Confirmation dialogs - extra prominent for dangerous actions */
+  .dangerous-action-confirm {
+    @apply border-destructive/50 bg-destructive/5;
+  }
+
+  /* Make native date/time picker icons visible in dark mode */
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.7);
+    cursor: pointer;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator:hover,
+  input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover,
+  input[type="time"]::-webkit-calendar-picker-indicator:hover {
+    filter: invert(1);
+  }
+}
+
+@layer utilities {
+  /* Custom scrollbar for dark theme */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted)) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted));
+    border-radius: 3px;
+  }
+
+  /* Operational text styles */
+  .text-operational {
+    @apply text-muted-foreground tracking-wide uppercase text-xs font-medium;
+  }
+
+  .text-data {
+    @apply font-mono text-sm;
+  }
+}
